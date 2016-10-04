@@ -1,0 +1,33 @@
+#so-en-banner {
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #e4e6e8;
+    margin: 20px 0 0;
+}
+
+#so-en-show-more-button,
+#so-en-show-on-another-so {
+    color: #FFF;
+    background-color: #0095ff;
+    border-color: #07c;
+    box-shadow: inset 0 1px 0 #66bfff;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    padding: 0.5em;
+    display: inline-block;
+}
+
+#so-en-banner span {
+    font-size: 18px;
+    margin-left: 60px;
+    line-height: 35px;
+}
+
+#so-en-show-more-button {
+    float: right;
+    margin-right: 60px;
+}
