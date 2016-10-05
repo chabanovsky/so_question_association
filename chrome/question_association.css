@@ -6,7 +6,8 @@
 }
 
 #so-en-show-more-button,
-#so-en-show-on-another-so {
+#so-en-show-on-another-so,
+#associate {
     color: #FFF;
     background-color: #0095ff;
     border-color: #07c;
@@ -30,4 +31,13 @@
 #so-en-show-more-button {
     float: right;
     margin-right: 60px;
+}
+
+#question-association-popup {
+    width: 830px;
+    height: 525px;
+}
+
+#associate {
+    float:right;
 }
