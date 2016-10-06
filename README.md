@@ -11,7 +11,7 @@ Follow [Google's instruction](https://developer.chrome.com/extensions/getstarted
 It works on two sides:
 
  1. Adds a special banner to "associated" questions, that says that there are more answers on Stack Overflow in Russian
- 2. Adds an action to user tools that allows one associates a question between Stack Overflow in Russian and Stack Overflow in English. _Note: It actually does nothing! There is no association, all associated questions are hardcoded in the code!__
+ 2. Adds an action to user tools that allows one associates a question between Stack Overflow in Russian and Stack Overflow in English. _Note: It actually does nothing! There is no association, all associated questions are hardcoded in the code!_
  
 ## Since associated question are hardcoded, where can I test it?
  
