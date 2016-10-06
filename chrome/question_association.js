@@ -32,7 +32,23 @@ function setupActions() {
 }
 
 function setupDataset() {
-    dataset["3211771"] = { ru: 519913, en: 3211771, author: 6};
+    // the key is id on SOen, value is id on SOru
+    dataset["3211771"] = "519913";
+    dataset["21573405"] = "519562"; 
+    dataset["18225126"] = "519283";
+    dataset["950087"] = "518486";
+    dataset["63447"] = "518064";
+    dataset["162304"] = "517684";
+    dataset["426258"] = "517241";
+    dataset["1783405"] = "516889";
+    dataset["419163"] = "515852";
+    dataset["1125968"] = "515435";
+    dataset["1085801"] = "513017";
+    dataset["2906582"] = "512862";
+    dataset["38549"] = "512193";
+    dataset["60174"] = "511895";
+    dataset["218384"] = "511085";
+    dataset["3988788"] = "510755";
 }
 
 function questionId(uri) {
@@ -59,17 +75,40 @@ function stackOverflowInEnglish(id) {
         $("#so-en-answer").html(answerHtml);
         $("#so-en-show-more-button").click(stackOverflowInEnglishShowAnswer);
         $("#so-en-banner").click(stackOverflowInEnglishShowAnswer);
-        startLoadAnswersFromStackOverflowInRussian(dataset[id].ru);
+        startLoadAnswersFromStackOverflowInRussian(dataset[id]);
     }
 }
 
 function stackOverflowInRussian(id) {
+    var association = findKeyByValye(dataset, id);
+    if (association) {
+        startLoadStackOverflowInEnglishQuestion(association, function(data) {
+            if (!data || !data.items || data.items.length == 0)
+                return;
+
+            var tmp = sidebarHTML();
+            var html = $(tmp);
+            var question = data.items[0]; 
+            $(html).find("a").attr("href", question.link);
+            $(html).find(".answer-votes").text(question.score);
+            $(html).find(".question-hyperlink").text(question.title);
+            if (question.is_answered) {
+                $(html).find(".answer-votes").addClass("answered-accepted");
+            }
+            
+            $(html).insertBefore($(".sidebar-linked"));
+        });
+    } 
     $("#question .post-menu").append("<a id='associate-link' class=''>ассоциировать</a>");
     $("#associate-link").click(function(){ 
         var popup = stackOverflowInLanguageAssociatePopupHTML();
         $(popup).insertAfter("#associate-link"); 
         $("#so-search-text").keyup(searchOnStackOverflowInEnglish);
         $("#associate").click(associateQuestion);
+        if (association) {
+            $("#so-search-text").val("http://stackoverflow.com/q/" + association + "/");
+            $("#so-search-text").trigger("keyup");
+        }
     });
 }
 
@@ -136,19 +175,23 @@ function searchOnStackOverflowInEnglish(event) {
 
     var isUrl = isStackOverflowInEnglishQuestionPage(searchKey);
     if (isUrl) {
-        startLoadStackOverflowInEnglishQuestion(questionId(searchKey));
+        startLoadStackOverflowInEnglishQuestionHelper(questionId(searchKey));
     } else {
         startLoadSearchResultsFromStackOverflow(searchKey);
     }
 }
 
-function startLoadStackOverflowInEnglishQuestion(id) {
+function startLoadStackOverflowInEnglishQuestionHelper (id) {
+    startLoadStackOverflowInEnglishQuestion(id, onLoadQuestionSuccessHandler)
+}
+
+function startLoadStackOverflowInEnglishQuestion(id, successCallback) {
     var url = questionApiEndpoint.replace(/\{id\}/g, id);
     $.ajax({
         url: url,
         method: 'GET',
-        success: onLoadQuestionSuccessHandler,
-    	  error: onLoadQuestionErrorHandler
+        success: successCallback,
+    	error: onLoadQuestionErrorHandler
     });  
 }
 
@@ -158,7 +201,7 @@ function startLoadSearchResultsFromStackOverflow(searchKey) {
         url: url,
         method: 'GET',
         success: onSearchSuccessHandler,
-    	  error: onSearchErrorHandler
+    	error: onSearchErrorHandler
     });
 }
 
@@ -239,6 +282,10 @@ function searchItemHTML() {
     return '<div><div class="item"><div class="stats"><div class="votes"><span class="vote-count-post"></span><div class="viewcount"></div></div></div><div class="summary"><div class="post-link"><a href=""></a></div><div><span class="body-summary"></span></div></div></div></div>';
 }
 
+function sidebarHTML() {
+    return '<div class="module sidebar-linked" id="association-sidebar"><h4 id="h-linked"><strong>Вопрос на других языках</strong></h4><div class="linked" data-tracker="lq=1"><div class="spacer"><a href="" title="Количество голосов («за» — «против»)"><div class="answer-votes default"></div></a><a href="" class="question-hyperlink"></a></div></div></div>';
+}
+
 function stripHtml(html) {
     var div = document.createElement("div");
     div.innerHTML = html;
@@ -247,4 +294,12 @@ function stripHtml(html) {
 
 function plural(n, forms) {
     return forms[n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2];
+}
+
+function findKeyByValye(arr, value) {
+    for (var key in arr) {
+        if (arr[key] == value)
+            return key;
+    }
+    return false;
 }
