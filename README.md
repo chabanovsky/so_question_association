@@ -79,7 +79,9 @@ This is just basic things! Let's play with the extension and add new features to
 
 ---
 
-Full proposal
+RFC–style proposal
+
+---
 
 # Goals
 Improve the structure (catalogization) of the knowledge base to provide much relevant content to users.
