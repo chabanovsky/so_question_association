@@ -75,3 +75,24 @@ Additionally to the menu, it'd be nice to have a way to add association thought 
 ## Suggest your ideas! 
  
 This is just basic things! Let's play with the extension and add new features to it!
+
+---
+
+# Answers To Your Questions
+
+### Most popular questions on Stack Overflow in Russian and equivalents on Stack Overflow in English
+
+Q: What are the most popular questions in Russian lagnuage? Are there equivalents of them in English?
+A: There are! 
+
+    SO RU    | SO EN
+    ---------------------
+    197812   | 8920247
+    257184   | 209905
+    136909   | 1321122
+    127221   | 10589304
+    154275   | 901712
+    148287   | 18093928
+    101366   | 22059670
+    
+    
