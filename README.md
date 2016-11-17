@@ -82,7 +82,7 @@ This is just basic things! Let's play with the extension and add new features to
 
 ### Most popular questions on Stack Overflow in Russian and equivalents on Stack Overflow in English
 
-Q: What are the most popular questions in Russian lagnuage? Are there equivalents of them in English?
+Q: What are the most popular (by views) questions in Russian lagnuage? Are there equivalents of them in English?
 A: There are! 
 
     SO RU    | SO EN
@@ -94,5 +94,6 @@ A: There are!
     154275   | 901712
     148287   | 18093928
     101366   | 22059670
-    
+    59820    | 13677253    
+    44244    | 33838854
     
