@@ -97,3 +97,24 @@ A: There are!
     59820    | 13677253    
     44244    | 33838854
     
+---
+
+Full proposal
+
+## Goals
+
+Improve the structure (catalogization) of the knowledge base to provide much relevant content to users.
+
+## Problem Statement
+
+Stack Overflow in English is the main landing site for developers from around the world, but not everyone of those developers knows English language, as a result, reducing understanding of content on the site, decreasing the desire to take an action on the site, etc.
+
+At the same time international Stack Overflows cover many the same questions that exist on Stack Overflow in English. International sites do not always presented on the top positions in search engines results, especially when a user performs a search in the English language. Developers simply do not know not only that there is the answer to a question in their language but that there is a whole strong international community which is ready to help.
+
+## Proposed Solution
+
+Cross–site association of questions should help to show much relevant content to users regardless the “landing site" (the entry point of our network) based on what a user needs right now in the way they can better understand it.
+
+The feature is designed for those whose the first language is not English and who want to learn programming from community but actually cannot because of the their language skills.
+
+Ideologically the association case is similar to the mechanism of the closing question (as a duplicate). Associating question we say that all useful information concerning to the specific problem is in one place.
